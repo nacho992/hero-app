@@ -16,14 +16,19 @@ export class MarvelService {
 
   getAllcharacters(): Observable<ResponseCharacters>{
     return this.http.get<ResponseCharacters>(environment.BASE_URL_MARVEL + 
-                                            `/v1/public/characters?ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
+      `/v1/public/characters?ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
       .pipe( (data: any) => data);
   }
 
   getDetails(id: number): Observable<any>{
     return this.http.get<any>(environment.BASE_URL_MARVEL + 
-                                          `/v1/public/characters/${id}?ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
-
+        `/v1/public/characters/${id}?ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
         .pipe( (data: any) => data)
+  }
+
+  searchCharacters(name: string): Observable<any>{
+    return this.http.get<any>(environment.BASE_URL_MARVEL + 
+      `/v1/public/characters?nameStartsWith=${name}&ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
+      
   }
 }

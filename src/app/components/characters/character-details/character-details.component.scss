@@ -1,8 +1,9 @@
 .grid{
     max-width: 1200px;
     margin: auto;
-    padding: 40px 0px 40px 0px;
-    display: grid;
+    padding: 100px 0px 40px 0px;
+    display: block;
+    z-index: 2;
 }
 
 .grid-in{
@@ -14,6 +15,7 @@
     --auto-grid-min-size: 27rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+    z-index: 2;
 } 
 
 .header{
@@ -24,13 +26,14 @@
     box-shadow: 0px 0px 10px #f90000, 0px 0px 10px #e84444;
     border: none;
     overflow: hidden;
-    margin: 160px 15px 15px 15px;
+    margin: 100px 15px 15px 15px;
     border-radius: 15px 15px 15px 15px;
     transition: all 0.2 ease-in-out;
     &:hover {
         box-shadow: 0 1px 20px #0408f0;
         cursor: pointer;
     }
+    z-index: 2;
 }
 
 img {
@@ -38,6 +41,7 @@ img {
     max-width: 600px;
     height: auto;
     max-height: 700px;
+    z-index: 2;
 }
 
 .background-cover{
@@ -50,7 +54,11 @@ img {
     height: 100%;
     width: 100% ;
     opacity: 0.7;
-    button {
-        margin-top: 100px;
-    }
+    margin: 56px 0px 0px 0px;
+    z-index: -1;
+}
+
+button{
+    z-index: 2;
+    margin: 5px 5px 5px 5px;
 }

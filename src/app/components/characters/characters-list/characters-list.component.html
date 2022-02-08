@@ -1,9 +1,26 @@
+<div class="background-cover"></div>
+<h1 *ngIf="query === undefined">All characters</h1>
+<h1 *ngIf="query !== undefined">All characters with {{query}}</h1>
 <div class="grid">
-    <div class="card border-primary mb-3" *ngFor="let char of characters" [routerLink]="['/character-details', char.id]">
-        <img src="{{char.thumbnail.path}}.{{char.thumbnail.extension}}" alt="">
-        <div class="card-header">{{char.modified | date}}</div>
-        <div class="card-body">
-          <h4 class="card-title">{{char.name}}</h4>
-        </div>
-      </div>
+  <div
+    class="card border-primary mb-3"
+    *ngFor="let char of characters"
+    [routerLink]="['/character-details', char.id]"
+  >
+    <img
+      src="{{ char.thumbnail.path }}.{{ char.thumbnail.extension }}"
+      alt=""
+    />
+    <div class="card-header">{{ char.modified | date }}</div>
+    <div class="card-body">
+      <h4 class="card-title">{{ char.name }}</h4>
+    </div>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-12 col-md-12 mt-5 container-notFound"
+    *ngIf="characters.length === 0"
+  >
+    <h2>Not founds...</h2>
+  </div>
 </div>

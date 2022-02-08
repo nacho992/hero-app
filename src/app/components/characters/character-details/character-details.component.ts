@@ -24,7 +24,6 @@ export class CharacterDetailsComponent implements OnInit {
     this.route.params.pipe().subscribe( (params) => {
       const id = params['id'];
       this.character$ = this.charService.getDetails(id);
-      console.log(this.character$.subscribe(res => console.log(res.data.results[0])))
     } )
   }
 

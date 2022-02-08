@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-search',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardSearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onSearch(value: string): void{
+    if (value && value.length > 3 ) {
+      this.router.navigate(['/character-list'], {
+        queryParams: { q: value }
+      })
+    }
   }
 
 }

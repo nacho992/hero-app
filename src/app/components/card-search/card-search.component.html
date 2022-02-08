@@ -1,11 +1,19 @@
 <div class="grid">
     <div class="card border-primary mb-3">
-      <div class="card-header">Header</div>
+      <div class="card-header">Search</div>
       <div class="card-body">
-        <h4 class="card-title">Primary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h4 class="card-title">Search your hero or villain</h4>
+        <p class="card-text">search for your hero or villain characters with names that begin with the specified string, for example iron...</p>
         <form class="d-flex">
-          <input class="form-control me-sm-2" type="text" placeholder="Search">
+          <input 
+          class="form-control me-sm-2" 
+          type="text"
+          #inputSearch
+          autofocus
+          class="form-control-lg"
+          placeholder="Search..."
+          (keyup)="onSearch(inputSearch.value)"
+          >
           <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>

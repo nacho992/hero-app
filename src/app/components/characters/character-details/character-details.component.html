@@ -1,8 +1,8 @@
 <div class="background-cover">
-  <button (click)="onGoBack()" class="btn btn-primary btn-lg mt-3">Back</button>
+  
 </div>
-
 <div class="grid" *ngIf="character$ | async as character">
+  <button (click)="onGoBack()" class="btn btn-outline-primary">Back</button>
     <div class="card border-secondary mb-3">
       <div class="header">
         <h2>{{ character.data.results[0].name }}</h2>

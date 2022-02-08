@@ -1,0 +1,42 @@
+<div class="background-cover">
+  <button (click)="onGoBack()" class="btn btn-primary btn-lg mt-3">Back</button>
+</div>
+
+<div class="grid" *ngIf="character$ | async as character">
+    <div class="card border-secondary mb-3">
+      <div class="header">
+        <h2>{{ character.data.results[0].name }}</h2>
+      <small class="text-muted">{{ character.data.results[0].modified | date }}</small>
+      </div>
+
+      <div class="grid-in">
+
+        <div class="img-card in-card-grid-1">
+          <img src="{{character.data.results[0].thumbnail.path}}.{{character.data.results[0].thumbnail.extension}}" alt="">
+        </div>
+
+      <div class="in-card-grid-2">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="tab" href="#home">{{ character.data.results[0].name }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#profile">more</a>
+            </li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+        
+            <div class="tab-pane fade active show" id="home">
+              <p>{{ character.data.results[0].description }}</p>
+            </div>
+        
+            <div class="tab-pane fade" id="profile">
+              <p>{{ character.data.results[0].description }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+</div>

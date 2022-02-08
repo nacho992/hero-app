@@ -1,0 +1,20 @@
+.grid{
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 40px 40px 40px;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.card {
+    box-shadow: 0px 0px 10px #ffffff, 0px 0px 5px #ffffff;
+    border: none;
+    overflow: hidden;
+    margin: 15px 15px 15px 15px;
+    transition: all 0.2 ease-in-out;
+    &:hover {
+        box-shadow: 0 1px 20px #0e49eb;
+        cursor: pointer;
+    }
+}

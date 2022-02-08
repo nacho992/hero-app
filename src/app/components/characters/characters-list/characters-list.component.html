@@ -1,0 +1,9 @@
+<div class="grid">
+    <div class="card border-primary mb-3" *ngFor="let char of characters" [routerLink]="['/character-details', char.id]">
+        <img src="{{char.thumbnail.path}}.{{char.thumbnail.extension}}" alt="">
+        <div class="card-header">{{char.modified | date}}</div>
+        <div class="card-body">
+          <h4 class="card-title">{{char.name}}</h4>
+        </div>
+      </div>
+</div>

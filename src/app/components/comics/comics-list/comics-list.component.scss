@@ -6,7 +6,12 @@
   grid-gap: 1rem;
   padding:5rem;
 }
-
+.header-comic{
+  max-width: 1200px;
+  margin: auto;
+  display:grid;
+  grid-template-columns: repeat( auto-fill, minmax(16rem, 1fr) );
+}
 .background-cover{
   background-image: url("../../../../assets/STL127823.jpg");
   position: fixed;
@@ -17,8 +22,8 @@
   height: 100%;
   width: 100% ;
   opacity: 0.6;
-  margin: 260px 0px 0px 0px;
-  box-shadow: 15px 13px 17px 101px rgb(222 209 242 / 26%);
+  margin: 0px 0px 0px 0px;
+  z-index: -1;
   button {
       margin-top: 100px;
   }

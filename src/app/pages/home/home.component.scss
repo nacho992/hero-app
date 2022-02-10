@@ -5,8 +5,21 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 664px;
+    height: 405px;
     width: 100% ;
     text-align: center;
     opacity: 0.6;
  }
+
+
+@media (max-width: 832px) {
+     .portada{
+        height: 404px;
+     }
+}
+
+@media (max-width: 1200px) {
+    .portada{
+       height: 424px;
+    }
+}

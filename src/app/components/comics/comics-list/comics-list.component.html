@@ -1,6 +1,32 @@
 <div class="background-cover"></div>
-<h1 >Comics</h1>
+<div class="container-header">
+    <div class="item1">
+        <h1 >Comics</h1>
+    </div>
+    <div class="item2">
+        <div class="form-group">
+            <label  class="form-label">Seeker</label>
+            <input type="email" class="form-control"  placeholder="Search comics">
+            <button class="btn btn-secondary my-2" type="submit">Search</button>
+            <small class="form-text">Select the filter for a correct result.</small>
+          </div>
 
+          <fieldset class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                Search by character.
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                Search between dates.
+              </label>
+            </div>
+          </fieldset>
+    </div>
+</div>
 <div class="grid">
     <div *ngFor="let com of comic">
         <div class="card">

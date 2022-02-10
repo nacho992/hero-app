@@ -21,10 +21,6 @@ export class CharactersListComponent implements OnInit {
 
   query = '';
 
-  private hideScrollHeight = 200;
-
-  private showScrollHeight = 500;
-
   constructor(private characterService: MarvelService,
               private route: ActivatedRoute,
               private router: Router,
@@ -51,7 +47,7 @@ export class CharactersListComponent implements OnInit {
   private getCharactersByQuery(): void{
     this.route.queryParams.pipe(take(1)).subscribe((params) => {
       this.query = params['q'];
-      if (this.query != '') {
+      if (this.query != undefined) {
         this.paramOk = true;
         this.characters = []
         console.log(this.query)

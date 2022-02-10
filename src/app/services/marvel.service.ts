@@ -14,6 +14,7 @@ export class MarvelService {
 
   constructor(private http: HttpClient) { }
 
+  //----------CHARCATERS-----------------
   getAllcharacters(): Observable<ResponseCharacters>{
     return this.http.get<ResponseCharacters>(environment.BASE_URL_MARVEL + 
       `/v1/public/characters?ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
@@ -30,5 +31,12 @@ export class MarvelService {
     return this.http.get<any>(environment.BASE_URL_MARVEL + 
       `/v1/public/characters?nameStartsWith=${name}&ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
       
+  }
+
+  //--------------COMICS--------------------
+  getComics(): Observable<any>{
+    return this.http.get<ResponseCharacters>(environment.BASE_URL_MARVEL + 
+      `/v1/public/comics?ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
+      .pipe( (data: any) => data);
   }
 }

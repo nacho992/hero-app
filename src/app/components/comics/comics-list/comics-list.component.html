@@ -1,0 +1,16 @@
+<div class="background-cover"></div>
+<h1 >Comics</h1>
+<div class="grid">
+    <div *ngFor="let com of comic">
+        <div class="card">
+            <img src="{{ com.thumbnail.path }}.{{ com.thumbnail.extension }}" alt="">
+            <div class="descriptions">
+                <h2>{{com.series.name}}</h2>
+                <p>
+                    {{com.variantDescription}}
+                    {{com.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

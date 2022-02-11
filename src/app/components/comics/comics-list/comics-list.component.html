@@ -6,16 +6,15 @@
   <div class="item2">
     <div class="form-group" [formGroup]="datos">
       <!-- Input Dates -->
-      <div *ngIf="optionsRadios2.checked">
+      <div *ngIf="datos.get('radio').value === 'option2'">
         <app-datepiker></app-datepiker>
       </div>
       <!-- Input Characters -->
-      <div *ngIf="optionsRadios1.checked">
+      <div *ngIf="datos.get('radio').value === 'option1'">
         <label class="form-label">Seeker</label>
-      <input type="email"
+      <input type="text"
              class="form-control" 
              placeholder="Search comics"
-             *ngIf="!datos.get('radio1').invalid"
              formControlName="inputSearch">
       <button class="btn btn-secondary my-2" 
               type="submit"
@@ -27,13 +26,12 @@
       <div class="form-check">
         <label class="form-check-label">
           <input type="radio"
-                 class="form-check-input" 
-                 name="optionsRadios" 
-                 #optionsRadios1
-                 value="option1" 
                  checked=""
-                 formControlName="radio1"
-                 required>
+                 class="form-check-input" 
+                 name="optionsRadios"               
+                 value="option1" 
+                 formControlName="radio"
+          >
           Search by character.
         </label>
       </div>
@@ -42,11 +40,10 @@
           <input type="radio" 
                  class="form-check-input" 
                  name="optionsRadios" 
-                 #optionsRadios2 
                  value="option2"
-                 required
-                 formControlName="radio2">
-          Search between dates.
+                 formControlName="radio"
+          >
+          Search between dates
         </label>
       </div>
 

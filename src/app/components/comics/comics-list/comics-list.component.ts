@@ -17,31 +17,30 @@ import {
 export class ComicsListComponent implements OnInit {
   comic: Comic[] = [];
 
-  datos: FormGroup = this.fb.group({
-    radio1: [true, [Validators.required]],
-    radio2: [false, [Validators.required]],
-    inputSearch: ['', [Validators.required, Validators.minLength(4)]],
-  });
+  public option: boolean = false;
 
+  datos: FormGroup
   constructor(private marvelService: MarvelService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.datos = this.fb.group({
+      radio: ['option1', [Validators.required]],
+      inputSearch: ['', [Validators.required, Validators.minLength(4)]],
+    });
+  
     this.getComics();
-    console.log(this.datos.value);
+
   }
 
   public search(): void {
-    if (!this.datos.get('radio1').invalid) {
+    if (this.datos.get('radio').value === 'option1') {
       console.log(
         'Buscar por personaje--->>',
         this.datos.get('inputSearch').value
       );
-    }
-
-    if (!this.datos.get('radio2').invalid) {
-      //verify date
-      console.log('Buscar entre dos fechas');
+    }else{
+      console.log('Buscar por fechas')
     }
   }
 

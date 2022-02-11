@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HttpClientModule } from "@angular/common/http";
 import { ComicsModule } from './components/comics/comics.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ComicsModule } from './components/comics/comics.module';
     AppRoutingModule,
     HttpClientModule,
     ComicsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

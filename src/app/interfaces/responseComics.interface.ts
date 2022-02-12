@@ -9,7 +9,7 @@ export interface ResponseComics {
 }
 
 interface Data {
-    offset:  string;
+    offset:  number;
     limit:   string;
     total:   string;
     count:   string;

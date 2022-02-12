@@ -1,53 +1,41 @@
-<form class="form-inline">
-  <div class="form-group hidden">
-    <div class="input-group">
-      <input name="datepicker"
-             class="form-control"
-             ngbDatepicker
-             #datepicker="ngbDatepicker"
-             [autoClose]="'outside'"
-             (dateSelect)="onDateSelection($event)"
-             [displayMonths]="2"
-             [dayTemplate]="t"
-             outsideDays="hidden"
-             [startDate]="fromDate!"
-             tabindex="-1">
-      <ng-template #t let-date let-focused="focused">
-        <span class="custom-day"
-              [class.focused]="focused"
-              [class.range]="isRange(date)"
-              [class.faded]="isHovered(date) || isInside(date)"
-              (mouseenter)="hoveredDate = date"
-              (mouseleave)="hoveredDate = null">
-          {{ date.day }}
-        </span>
-      </ng-template>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="input-group">
-      <input #dpFromDate
-             class="form-control" placeholder="yyyy-mm-dd"
-             name="dpFromDate"
-             [value]="formatter.format(fromDate)"
-             (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
-      </div>
-    </div>
-  </div>
-  <div class="form-group ml-2">
-    <div class="input-group">
-      <input #dpToDate
-             class="form-control" placeholder="yyyy-mm-dd"
-             name="dpToDate"
-             [value]="formatter.format(toDate)"
-             (input)="toDate = validateInput(toDate, dpToDate.value)">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"></button>
-      </div>
-    </div>
-  </div>
-</form>
 
-<hr/>
+  <div class="form-group">
+    <div >
+      <!-- Input date from -->
+      <label class="form-label">Date from</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="modelFrom" ngbDatepicker
+        #d="ngbDatepicker" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z" />
+          </svg>
+        </button>
+      </div>
+
+      <div >
+        <!-- Input date to -->
+      <label class="form-label">Date to</label>
+      <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="modelTo" ngbDatepicker
+        #dateTo="ngbDatepicker" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="dateTo.toggle()" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z" />
+          </svg>
+        </button>
+      </div>
+      </div>
+    </div>
+    <button class="btn btn-secondary my-2" type="submit" (click)="inputDate()">
+      Search
+    </button>
+    <!-- end form -->
+  </div>
+
+
+<hr />

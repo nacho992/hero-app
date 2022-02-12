@@ -7,61 +7,74 @@
     <div class="form-group" [formGroup]="datos">
       <!-- Input Dates -->
       <div *ngIf="datos.get('radio').value === 'option2'">
-        <app-datepiker></app-datepiker>
+        <app-datepiker (newDateFromInput)="(dateFromInput($event))" (newDateToInput)="(dateToInput($event))"></app-datepiker>
       </div>
       <!-- Input Characters -->
       <div *ngIf="datos.get('radio').value === 'option1'">
         <label class="form-label">Seeker</label>
-      <input type="text"
-             class="form-control" 
-             placeholder="Search comics"
-             formControlName="inputSearch">
-      <button class="btn btn-secondary my-2" 
-              type="submit"
-              (click)="search()">Search</button>
-      <small class="form-text">Select the filter for a correct result.</small>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search comics"
+          formControlName="inputSearch"
+        />
+        <button class="btn btn-secondary my-2" type="submit" (click)="search()">
+          Search
+        </button>
+        <small class="form-text">Select the filter for a correct result.</small>
       </div>
-          <!-- CheckBox -->
-    
+      <!-- CheckBox -->
+
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio"
-                 checked=""
-                 class="form-check-input" 
-                 name="optionsRadios"               
-                 value="option1" 
-                 formControlName="radio"
-          >
+          <input
+            type="radio"
+            checked=""
+            class="form-check-input"
+            name="optionsRadios"
+            value="option1"
+            formControlName="radio"
+          />
           Search by character.
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" 
-                 class="form-check-input" 
-                 name="optionsRadios" 
-                 value="option2"
-                 formControlName="radio"
-          >
+          <input
+            type="radio"
+            class="form-check-input"
+            name="optionsRadios"
+            value="option2"
+            formControlName="radio"
+          />
           Search between dates
         </label>
       </div>
-
     </div>
     <!-- end Form -->
   </div>
 </div>
-<div class="grid">
+
+<div class="grid"  infinite-scroll (scrolled)="onScrollDown()">
   <div *ngFor="let com of comic">
     <div class="card">
-      <img src="{{ com.thumbnail.path }}.{{ com.thumbnail.extension }}" alt="">
+      <img
+        src="{{ com.thumbnail.path }}.{{ com.thumbnail.extension }}"
+        alt=""
+      />
       <div class="descriptions">
-        <h2>{{com.series.name}}</h2>
+        <h2>{{ com.series.name }}</h2>
         <p *ngIf="com.textObjects.length >= 0">
-          {{com.textObjects[0] | json | slice :66}}
-          {{com.variantDescription}}
+          {{ com.textObjects[0] | json | slice: 66 }}
+          {{ com.variantDescription }}
         </p>
       </div>
     </div>
   </div>
 </div>
+
+<button [ngClass]="'no-hidden'"
+        *ngIf="showGoUpButton"
+        (click)="onScrollTop()"
+        class="btn btn-primary btn-lg mt-3"
+ class="btn btn-dark">Go Up!</button>

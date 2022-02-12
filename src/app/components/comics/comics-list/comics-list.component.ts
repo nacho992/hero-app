@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { Comic } from '../../../interfaces/Comic.interface';
 import { MarvelService } from 'src/app/services/marvel.service';
 import { take } from 'rxjs/operators';
@@ -8,6 +8,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { DOCUMENT } from "@angular/common";
+
 
 @Component({
   selector: 'app-comics-list',
@@ -15,12 +18,22 @@ import {
   styleUrls: ['./comics-list.component.scss'],
 })
 export class ComicsListComponent implements OnInit {
-  comic: Comic[] = [];
 
-  public option: boolean = false;
-
+  showGoUpButton = false
+  moreData = false
+  comic: Comic[] = []
+  dateFrom: NgbDateStruct
+  dateTo: NgbDateStruct
+  offset = 0
   datos: FormGroup
-  constructor(private marvelService: MarvelService, private fb: FormBuilder) {
+  private hideScrollHeight = 200;
+
+  private showScrollHeight = 500;
+
+  constructor(
+     @Inject(DOCUMENT) private document: Document,
+     private marvelService: MarvelService,
+     private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -28,25 +41,61 @@ export class ComicsListComponent implements OnInit {
       radio: ['option1', [Validators.required]],
       inputSearch: ['', [Validators.required, Validators.minLength(4)]],
     });
-  
     this.getComics();
+  }
 
+  public dateFromInput(event){
+    this.dateFrom = event
+    this.comic = []
+    if (this.dateFrom && this.dateTo) {
+      this.moreData = false;
+      this.getComicsRange();
+    }
+  }
+
+  public dateToInput(event){
+    this.dateTo = event
   }
 
   public search(): void {
+    this.comic = []
     if (this.datos.get('radio').value === 'option1') {
-      console.log(
-        'Buscar por personaje--->>',
-        this.datos.get('inputSearch').value
-      );
-    }else{
-      console.log('Buscar por fechas')
+      this.getComicWithTitle(this.datos.get('inputSearch').value)
     }
+  }
+
+  /*-------------- Consum servise Marvel-------------- */
+  private getComicsRange(): void{
+    this.marvelService.getComicsdateRange(this.dateFrom, this.dateTo, this.offset)
+      .pipe(take(1))
+      .subscribe( (res: ResponseComics) => {
+        if (!res?.data?.results.length) {
+          this.comic = [];
+        }
+        if (res?.data?.results.length) {
+          this.comic = [...this.comic, ...res.data.results];
+          this.moreData = true
+        }
+      })
+  }
+
+  private getComicWithTitle(title: string): void{
+    this.marvelService.getComicsWithCharacter(title,this.offset)
+      .pipe(take(1))
+      .subscribe( (res: ResponseComics) => {
+        if (!res?.data?.results.length) {
+          this.comic = [];
+        }
+        if (res?.data?.results.length) {
+          this.comic = [...this.comic, ...res.data.results];
+          this.moreData = true
+        }
+      })
   }
 
   private getComics(): void {
     this.marvelService
-      .getComics()
+      .getComics(this.offset)
       .pipe(take(1))
       .subscribe((res: ResponseComics) => {
         if (!res?.data?.results.length) {
@@ -54,7 +103,40 @@ export class ComicsListComponent implements OnInit {
         }
         if (res?.data?.results.length) {
           this.comic = [...this.comic, ...res.data.results];
+          this.moreData = true
         }
       });
+  }
+
+  //------INFINITE SCROLL-----------
+  @HostListener('window:scroll', [])
+  onWindowScroll():void {
+    const yOffSet = window.pageYOffset;
+    if ((yOffSet || this.document.documentElement.scrollTop || this.document.body.scrollTop) > this.showScrollHeight) {
+      this.showGoUpButton = true;
+    } else if (this.showGoUpButton && (yOffSet || this.document.documentElement.scrollTop || this.document.body.scrollTop) < this.hideScrollHeight) {
+      this.showGoUpButton = false;
+    }
+  }
+
+  onScrollDown():void{
+    if (this.moreData) {
+      this.offset += 20;
+      console.log(this.offset)
+      if (this.dateFrom && this.dateTo) {
+        this.getComicsRange();
+      }
+      if ((this.datos.get('radio').value === 'option1') && this.datos.get('inputSearch').value !== '') {
+        this.getComicWithTitle(this.datos.get('inputSearch').value)
+      }
+      if (this.datos.invalid && (!this.dateFrom && !this.dateTo)) {
+        this.getComics();
+      }
+    }
+  }
+
+  onScrollTop():void{
+    this.document.body.scrollTop = 0; // Safari
+    this.document.documentElement.scrollTop = 0; // Other
   }
 }

@@ -11,7 +11,7 @@ export interface ResponseCharacters {
 interface Data {
     offset:  string;
     limit:   string;
-    total:   string;
+    total:   number;
     count:   string;
     results: Result[];
 }

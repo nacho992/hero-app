@@ -7,7 +7,7 @@
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 }
 
-.card {
+/* .card {
     box-shadow: 0px 0px 10px #ffffff, 0px 0px 5px #ffffff;
     border: none;
     overflow: hidden;
@@ -17,13 +17,28 @@
         box-shadow: 0 1px 20px #0e49eb;
         cursor: pointer;
     }
+} */
+.title-page{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-image: url("../../../../assets/AllCharacters.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10vw;
+    width: 55vw;
+    position: relative;
+    margin: 55px 0px 0px 55px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 h1{
     font-size: 7vw;
     padding: 100px 0px 0px 55px;
-    font-family: 'Marvel', sans-serif;
+    font-family: 'comics', sans-serif;
     position: sticky;
+    color: aliceblue;
 }
 
 .background-cover{
@@ -40,4 +55,111 @@ h1{
     button {
         margin-top: 100px;
     }
+}
+
+.card {
+    --background:#FFFFFF;
+    --text:black;
+    box-shadow:0 0 2rem -1rem rgba(0,0,0,.05);
+    &:hover {
+        box-shadow: 0 1px 20px #0e49eb;
+        cursor: pointer;
+    }
+    .multi-button {
+        z-index:0;
+        position: absolute;
+        top:1.25rem;
+        left:1.25rem;
+        border-radius:100%;
+        width:0rem;
+        height:0rem;
+        transform: translate(-50%, -50%);
+        transition: .25s cubic-bezier(0.25, 0, 0, 1);
+        button {
+            display: grid;
+            place-items: center;
+            position: absolute;
+            width:2rem;
+            height:2rem;
+            border:none;
+            border-radius:100%;
+            background:var(--background);
+            color:var(--text);
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: .25s cubic-bezier(0.25, 0, 0, 1);
+            box-shadow:0 0 0rem -.25rem var(--background);
+            &:hover {
+                background:var(--text);
+                color:var(--background);
+                box-shadow:0 0 1rem -.25rem var(--background);
+            }
+            &:first-child:nth-last-child(1) { //If there is 1 child
+                left:25%;
+                top:25%;
+            }
+            &:first-child:nth-last-child(2),
+            &:first-child:nth-last-child(2) ~ * { //If there are 2 children
+                &:nth-child(1) {
+                    left:37.5%;
+                    top:18.75%;
+                }
+                &:nth-child(2) {
+                    left:18.75%;
+                    top:37.5%;
+                }
+            }
+            &:first-child:nth-last-child(3),
+            &:first-child:nth-last-child(3) ~ * { //If there are 3 children
+                &:nth-child(1) {
+                    left:50%;
+                    top:15.625%;
+                }
+                &:nth-child(2) {
+                    left:25%;
+                    top:25%;
+                }
+                &:nth-child(3) {
+                    left:15.625%;
+                    top:50%;
+                }
+            }
+            &:first-child:nth-last-child(4), //If there are 4 children, if first child is also 4th item from bottom get self, and
+            &:first-child:nth-last-child(4) ~ * { //If there are 4 children, if first child is also 4th item from bottom get siblings
+                &:nth-child(1) {
+                    left:62.5%;
+                    top:18.75%;
+                }
+                &:nth-child(2) {
+                    left:37.5%;
+                    top:18.75%;
+                }
+                &:nth-child(3) {
+                    left:18.75%;
+                    top:37.5%;
+                }
+                &:nth-child(4) {
+                    left:18.75%;
+                    top:62.5%;
+                }
+            }
+        }
+    }
+    .container {
+        position: absolute;
+        width:100%;
+        height:100%;
+        border-radius:1rem;
+        background:var(--background);
+        color:var(--text);
+    }
+    &:hover .multi-button, .multi-button:focus-within { //Hover or a button inside is focused
+        width:10rem;
+        height:10rem;
+    }
+}
+
+.justify-content-center {
+    display: flex !important;
+    justify-content: center !important;
 }

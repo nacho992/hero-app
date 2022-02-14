@@ -15,9 +15,9 @@ export class MarvelService {
   constructor(private http: HttpClient) { }
 
   //----------CHARCATERS-----------------
-  getAllcharacters(): Observable<ResponseCharacters>{
+  getAllcharacters(skip: number): Observable<ResponseCharacters>{
     return this.http.get<ResponseCharacters>(environment.BASE_URL_MARVEL + 
-      `/v1/public/characters?ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
+      `/v1/public/characters?offset=${skip}&ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
       .pipe( (data: any) => data);
   }
 
@@ -27,9 +27,9 @@ export class MarvelService {
         .pipe( (data: any) => data)
   }
 
-  searchCharacters(name: string): Observable<any>{
+  searchCharacters(name: string,skip: number): Observable<ResponseCharacters>{
     return this.http.get<any>(environment.BASE_URL_MARVEL + 
-      `/v1/public/characters?nameStartsWith=${name}&ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
+      `/v1/public/characters?offset=${skip}&nameStartsWith=${name}&ts=1&apikey=${environment.PUBLIC_KEY_MARVEL}&hash=${this.hash_key}`)
       
   }
 

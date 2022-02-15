@@ -103,6 +103,7 @@ export class ComicsListComponent implements OnInit {
         }
         if (res?.data?.results.length) {
           this.comic = [...this.comic, ...res.data.results];
+          console.log(this.comic[4])
           this.moreData = true
         }
       });

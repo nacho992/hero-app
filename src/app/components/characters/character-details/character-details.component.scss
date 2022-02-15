@@ -7,12 +7,11 @@
 }
 
 .grid-in{
-    width: 100%;
     margin: auto;
-    padding: 40px 0px 40px 0px;
+    padding: 40px 40px 40px 40px;
     display: grid;
     gap: .5rem;
-    --auto-grid-min-size: 27rem;
+    --auto-grid-min-size: 20rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
     z-index: 2;
@@ -37,11 +36,7 @@
 }
 
 img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    max-height: 700px;
-    z-index: 2;
+    width: 90%;
 }
 
 .background-cover{
@@ -61,4 +56,7 @@ img {
 button{
     z-index: 2;
     margin: 5px 5px 5px 5px;
+    color: #ffffff;
+    border-color: #ffffff;
+    background-color: #cc0000;
 }

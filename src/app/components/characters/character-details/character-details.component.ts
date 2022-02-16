@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Character } from 'src/app/interfaces/Character.interface';
 import { MarvelService } from 'src/app/services/marvel.service';
 import { Location } from '@angular/common'
 

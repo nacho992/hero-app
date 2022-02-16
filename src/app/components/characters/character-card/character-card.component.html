@@ -1,0 +1,21 @@
+<article>
+  <div class="card border-primary mb-3">
+
+    <img [routerLink]="['/character-details', character.id]"
+      src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" alt="" />
+      
+    <div class="card-header">{{ character.modified | date }}</div>
+    <div class="card-body">
+      <h4 class="card-title">{{ character.name }}</h4>
+    </div>
+
+    <div class="multi-button">
+      <button class="fas fa-heart" (click)="toggleFavorite()">
+        <img rel="preload" as="image" width="21" height="21" src="../../../../assets/icons/{{getIcon()}}"
+          [alt]="character.name" />
+
+      </button>
+    </div>
+
+  </div>
+</article>

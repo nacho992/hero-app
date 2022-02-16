@@ -17,7 +17,8 @@ interface Data {
 } */
 
 export interface Character{
-    id:          string;
+    isFavorite:  boolean;
+    id:          number;
     name:        string;
     description: string;
     modified:    string;

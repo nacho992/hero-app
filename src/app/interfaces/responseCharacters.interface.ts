@@ -17,7 +17,8 @@ interface Data {
 }
 
 interface Result {
-    id:          string;
+    id:          number;
+    isFavorite:  boolean;
     name:        string;
     description: string;
     modified:    string;

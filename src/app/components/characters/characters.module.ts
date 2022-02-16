@@ -4,10 +4,12 @@ import { CharacterDetailsComponent } from './character-details/character-details
 import { CharactersListComponent } from './characters-list/characters-list.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { CharacterCardComponent } from './character-card/character-card.component';
 
 const myComponent = [
   CharacterDetailsComponent,
-  CharactersListComponent
+  CharactersListComponent,
+  CharacterCardComponent
 ]
 @NgModule({
   declarations: [...myComponent],

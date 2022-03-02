@@ -1,27 +1,39 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-danger" >
-    <div class="container-fluid">
-      <a class="navbar-brand">Marvel-app</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" color="white"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['home']">Home
-              <span class="visually-hidden"></span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['character-list']">Characters</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['comics-list']">Comics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <img src="../../../assets/Marvel_Logo.svg.png" alt="Marvel" />
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="nav-content">
+          <ul class="nav-links">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['home']"
+                >Home
+                <span class="visually-hidden"></span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['character-list']">Characters</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['comics-list']">Comics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+  </div>
+</nav>

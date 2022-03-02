@@ -1,12 +1,12 @@
 <article>
-  <div class="card border-primary mb-3">
+  <div class="card">
 
     <img [routerLink]="['/character-details', character.id]"
       src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" alt="" />
       
     <div class="card-header">{{ character.modified | date }}</div>
     <div class="card-body">
-      <h4 class="card-title">{{ character.name }}</h4>
+      <h5 class="card-title">{{ character.name }}</h5>
     </div>
 
     <div class="multi-button">

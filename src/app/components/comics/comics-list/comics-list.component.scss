@@ -9,7 +9,7 @@
 .container-header {
   background: rgba(30, 30, 30, 0.8);
   z-index: 1;
-  margin: 10px 0px 20px 0px;
+  margin: 30px 0px 20px 0px;
   width: 80vw;
   position: relative;
   top: 50%;
@@ -55,7 +55,7 @@
 }
 
 .background-cover{
-  background-image: url("../../../../assets/STL127823.jpg");
+  background-image: url("../../../../assets/civil-war.jpg");
   position: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -84,7 +84,7 @@ h1{
     flex-grow: 0;
     height: 440px;
     background: #fff;
-    border: 2px solid #fff;
+    border: none;
     box-shadow: 0px 4px 7px rgba(0,0,0,.5);
     cursor: pointer;
     transition: all .5s cubic-bezier(.8,.5,.2,1.4);

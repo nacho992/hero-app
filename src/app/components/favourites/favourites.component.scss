@@ -1,0 +1,109 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+h2{
+    margin: 90px 0px 0px 50px
+}
+
+.grid {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 40px 40px 40px;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+.container {
+    z-index: 0;
+    padding: 40px 0px 0px 0px;
+
+    .card {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        margin: 0 auto;
+        background: #000;
+        border-radius: 15px;
+        box-shadow: 0 5px 30px rgba(255, 255, 255, 0.5);
+        .content {
+            padding: 10px;
+        }
+
+        .face {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            overflow: hidden;
+            align-items: center;
+
+            &.face1 {
+                box-sizing: border-box;
+                padding: 20px;
+                .multi-button {
+                    z-index: 0;
+                    position: absolute;
+                    top: 1.25rem;
+                    left: 1.25rem;
+                    border-radius: 100%;
+                    width: 0rem;
+                    height: 0rem;
+                    transform: translate(-50%, -50%);
+                    transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
+                    button {
+                        display: grid;
+                        place-items: center;
+                        position: absolute;
+                        width: 2rem;
+                        height: 2rem;
+                        border: none;
+                        border-radius: 100%;
+                        background: var(--background);
+                        color: var(--text);
+                        transform: translate(-50%, -50%);
+                        cursor: pointer;
+                        transition: 0.25s cubic-bezier(0.25, 0, 0, 1);
+                        box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.05);
+                        &:hover {
+                            //background:var(--text);
+                            background: #ff9191;
+                            color: var(--background);
+                            box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.05);
+                        }
+                    }
+                }
+
+                h2 {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+            &.face2 {
+                transition: 0.5s;
+
+                img {
+                    width: inherit;
+                    z-index: 10;
+                }
+            }
+        }
+    }
+
+    .card:hover .face.face2 {
+        height: 10px;
+
+        img {
+            width: inherit;
+            height: 0px;
+        }
+    }
+
+    .card .face.face2 {
+        background-color: #ffff;
+        border-radius: 15px;
+    }
+}

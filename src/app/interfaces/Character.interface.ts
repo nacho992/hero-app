@@ -1,21 +1,3 @@
-/* export interface Character {
-    code:            string;
-    status:          string;
-    copyright:       string;
-    attributionText: string;
-    attributionHTML: string;
-    data:            Data;
-    etag:            string;
-}
-
-interface Data {
-    offset:  string;
-    limit:   string;
-    total:   string;
-    count:   string;
-    results: Result[];
-} */
-
 export interface Character{
     isFavorite:  boolean;
     id:          number;
